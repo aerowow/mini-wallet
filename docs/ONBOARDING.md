@@ -12,6 +12,8 @@ Email должен быть привязан к твоему GitHub-аккаун
 иначе не сможешь пушить и ревьюить.
 
 ## 2. Собери и запусти
+Минимальная версия — iOS 26.0, подойдёт любой Xcode с iOS 26 SDK.
+
 `open mini-wallet/mini-wallet.xcodeproj`, симулятор iPhone, Cmd+R.
 Терминал:
     xcodebuild -project mini-wallet/mini-wallet.xcodeproj -scheme mini-wallet \
