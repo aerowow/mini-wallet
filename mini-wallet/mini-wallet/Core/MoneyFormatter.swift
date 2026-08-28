@@ -17,7 +17,13 @@ enum MoneyFormatter {
     }()
 
     static func string(from amount: Decimal, currency: Currency) -> String {
-        let number = numberFormatter.string(from: NSDecimalNumber(decimal: amount)) ?? "\(amount)"
+        // Округляем до сотых в Decimal ДО NumberFormatter: его внутреннее
+        // округление идёт через двоичную арифметику и ошибается на границах
+        // полукопейки (1,005 -> "1,00").
+        var value = amount
+        var rounded = Decimal()
+        NSDecimalRound(&rounded, &value, 2, .plain)
+        let number = numberFormatter.string(from: NSDecimalNumber(decimal: rounded)) ?? "\(rounded)"
         return number + "\u{00A0}" + currency.symbol
     }
 }
