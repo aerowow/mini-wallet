@@ -6,7 +6,8 @@
 субагентами, с PR-флоу и кросс-ревью.
 
 ## Как запустить
-Нужен Xcode с поддержкой проекта (см. deployment target в настройках таргета).
+Минимальная версия — **iOS 26.0**: подойдёт любой Xcode с iOS 26 SDK,
+конкретной 26.5 не требуется.
 
     git clone https://github.com/aerowow/mini-wallet.git
     cd mini-wallet
@@ -29,7 +30,8 @@
 - `mini-wallet/` — Xcode-проект; `mini-wallet/mini-wallet/Features/` — по папке на разработчика
 - `mini-wallet/mini-wallet/Core/` — общий контракт: модели, `WalletStore`, `MoneyFormatter`, мок-данные, `AppRouter`. После мержа `core/shell` заморожен
 - `docs/specs/` — ТЗ от PM, `docs/` — итоговый PDF (`docs/MiniWallet-specs.pdf`)
-- `design/` — макеты (pen.dev)
+- `design/` — макеты (pen.dev): `accountsDesign.pdf`, `transferDesign.pdf`,
+  `historyDesign.pdf` + промпт генерации `pen-dev-prompt.md`
 - `sessions/` — журналы сессий с агентами (промпты дословно)
 - `workflows/` — сохранённые workflow каждого участника (минимум один на человека)
 - `REPORT.md` — отчёт: что делали, что не сработало, замеры

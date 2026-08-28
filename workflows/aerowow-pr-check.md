@@ -9,7 +9,8 @@
 
 Проверь мою ветку перед PR по шагам, после каждого шага — короткий вердикт:
 1) `git diff main --stat` — в диффе только мои папки (моя фича + мои sessions/ и workflows/);
-   project.pbxproj и общий контракт не изменены;
+   общий контракт не изменён; если задет project.pbxproj — покажи дифф по нему
+   отдельно и проверь, что это правка настроек, а не ручное добавление .swift-файлов;
 2) сборка: `xcodebuild -project mini-wallet/mini-wallet.xcodeproj -scheme mini-wallet
    -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build` — успешна;
 3) `git diff main` — в диффе нет секретов, токенов, личных данных, абсолютных путей с моим именем;
