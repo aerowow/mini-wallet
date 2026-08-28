@@ -9,6 +9,10 @@ enum MockData {
     private static let savingsAccountID = UUID()
     private static let currencyAccountID = UUID()
 
+    // Единый момент «сейчас» для всех мок-дат: startOfDay и кэп дня 0 считаются
+    // от одного значения, поэтому порядок операций невозрастающий по построению.
+    private static let launchInstant = Date()
+
     static let accounts: [Account] = [
         Account(id: mainAccountID, name: "Основной", maskedNumber: "•• 4417",
                 currency: .rub, balance: 128_450),
@@ -54,11 +58,11 @@ enum MockData {
     private static func date(daysAgo: Int, hour: Int, minute: Int) -> Date {
         let calendar = Calendar.current
         let day = calendar.date(byAdding: .day, value: -daysAgo,
-                                to: calendar.startOfDay(for: .now)) ?? .now
+                                to: calendar.startOfDay(for: launchInstant)) ?? launchInstant
         let date = calendar.date(bySettingHour: hour, minute: minute, second: 0, of: day) ?? day
         // Времена дня 0 из ТЗ могут ещё не наступить при утреннем запуске —
-        // ограничиваем сверху текущим моментом, чтобы новый перевод (date: .now)
-        // не нарушал порядок «по убыванию даты и времени».
-        return min(date, .now)
+        // ограничиваем сверху моментом инициализации, чтобы новый перевод
+        // (date: .now) не нарушал порядок «по убыванию даты и времени».
+        return min(date, launchInstant)
     }
 }
