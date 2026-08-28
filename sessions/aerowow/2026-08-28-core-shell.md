@@ -45,7 +45,7 @@
 - Решения Задачи 6, зафиксированные для истории (эта сессия их не меняет,
   только проверяет результат): новый Tab API iOS 18+
   (`Tab(_:systemImage:value:)`) вместо устаревшего `.tabItem`; `@Bindable`-шэдоу
-  для `selection` из `@Observable`-роутера (`AppRouter`); `ContentView.swift`
+  для `selectedTab` из `@Observable`-роутера (`AppRouter`); `ContentView.swift`
   удалён как неиспользуемый после перехода на `RootTabView`; разовая
   согласованная правка корня (`mini_walletApp.swift`) для подключения
   `WalletStore` + `AppRouter` — после мержа `core/shell` корень
