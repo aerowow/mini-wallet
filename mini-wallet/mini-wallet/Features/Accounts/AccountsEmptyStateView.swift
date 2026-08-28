@@ -22,3 +22,10 @@ struct AccountsEmptyStateView: View {
         .frame(maxWidth: .infinity)
     }
 }
+
+#Preview {
+    AccountsEmptyStateView()
+        .padding(.horizontal, AccountsDesign.screenHPadding)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(AccountsDesign.screenBackground)
+}

@@ -10,10 +10,8 @@ struct AccountsListSection: View {
             Text("Мои счета")
                 .font(AccountsDesign.bodySemiboldFont)
                 .foregroundStyle(AccountsDesign.textPrimary)
-            VStack(spacing: AccountsDesign.cardSpacing) {
-                ForEach(accounts) { account in
-                    AccountCardView(account: account)
-                }
+            ForEach(accounts) { account in
+                AccountCardView(account: account)
             }
         }
     }

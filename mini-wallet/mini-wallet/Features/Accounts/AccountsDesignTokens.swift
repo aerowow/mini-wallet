@@ -21,13 +21,16 @@ enum AccountsDesign {
     static let buttonCornerRadius: CGFloat = 16
     static let borderWidth: CGFloat = 1
 
-    // Типографика макета: 28 / 34 / 17 / 15 / 13
-    static let titleFont = Font.system(size: 28, weight: .bold)
-    static let amountLargeFont = Font.system(size: 34, weight: .bold)
-    static let bodyFont = Font.system(size: 17)
-    static let bodySemiboldFont = Font.system(size: 17, weight: .semibold)
-    static let subtitleFont = Font.system(size: 15)
-    static let captionFont = Font.system(size: 13)
+    // Типографика макета: 28 / 34 / 17 / 15 / 13. Размеры совпадают с дефолтами
+    // системных стилей (.title/.largeTitle/.body/.subheadline/.footnote), поэтому
+    // относительные шрифты масштабируются Dynamic Type, не отличаясь от макета
+    // при стандартной настройке.
+    static let titleFont = Font.system(.title, weight: .bold)
+    static let amountLargeFont = Font.system(.largeTitle, weight: .bold)
+    static let bodyFont = Font.system(.body)
+    static let bodySemiboldFont = Font.system(.body, weight: .semibold)
+    static let subtitleFont = Font.system(.subheadline)
+    static let captionFont = Font.system(.footnote)
 }
 
 extension View {

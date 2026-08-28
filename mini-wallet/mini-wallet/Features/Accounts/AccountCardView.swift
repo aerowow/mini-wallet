@@ -6,7 +6,7 @@ struct AccountCardView: View {
     let account: Account
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: AccountsDesign.cardSpacing) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(account.name)
                     .font(AccountsDesign.bodyFont)
@@ -15,14 +15,17 @@ struct AccountCardView: View {
                     .font(AccountsDesign.captionFont)
                     .foregroundStyle(AccountsDesign.textSecondary)
             }
-            Spacer(minLength: 12)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            // Сумма набрана неразрывными пробелами и не переносится —
+            // при нехватке ширины сжимается имя, а не баланс.
             Text(MoneyFormatter.string(from: account.balance, currency: account.currency))
                 .font(AccountsDesign.bodySemiboldFont)
                 .foregroundStyle(AccountsDesign.textPrimary)
+                .layoutPriority(1)
         }
         .padding(AccountsDesign.cardPadding)
-        .frame(maxWidth: .infinity, alignment: .leading)
         .accountsCardBackground()
+        .accessibilityElement(children: .combine)
     }
 }
 

@@ -2,19 +2,21 @@ import SwiftUI
 
 /// Главная акцентная кнопка экрана «Счета» («Перевести»).
 /// Выключенность управляется стандартным `.disabled(true)` на месте вызова.
-struct PrimaryButton: View {
+/// Префикс Accounts обязателен: все Features собираются в один модуль,
+/// и без него тип столкнётся с одноимённым у других фич.
+struct AccountsPrimaryButton: View {
     let title: String
     let action: () -> Void
 
     var body: some View {
         Button(title, action: action)
-            .buttonStyle(PrimaryButtonStyle())
+            .buttonStyle(AccountsPrimaryButtonStyle())
     }
 }
 
 /// Стиль главной кнопки: акцентная заливка, белый текст,
 /// приглушение при нажатии и в выключенном состоянии.
-private struct PrimaryButtonStyle: ButtonStyle {
+private struct AccountsPrimaryButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) private var isEnabled
 
     func makeBody(configuration: Configuration) -> some View {
@@ -23,20 +25,19 @@ private struct PrimaryButtonStyle: ButtonStyle {
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
             .frame(height: AccountsDesign.buttonHeight)
-            .background {
-                RoundedRectangle(cornerRadius: AccountsDesign.buttonCornerRadius)
-                    .fill(isEnabled ? AccountsDesign.accent : AccountsDesign.accent.opacity(0.4))
-            }
+            .background(
+                isEnabled ? AccountsDesign.accent : AccountsDesign.accent.opacity(0.4),
+                in: .rect(cornerRadius: AccountsDesign.buttonCornerRadius)
+            )
             .opacity(configuration.isPressed ? 0.85 : 1)
     }
 }
 
 #Preview {
     VStack(spacing: AccountsDesign.sectionSpacing) {
-        PrimaryButton(title: "Перевести") {}
-        PrimaryButton(title: "Перевести") {}
+        AccountsPrimaryButton(title: "Перевести") {}
+        AccountsPrimaryButton(title: "Перевести") {}
             .disabled(true)
-        AccountsEmptyStateView()
     }
     .padding(.horizontal, AccountsDesign.screenHPadding)
     .frame(maxWidth: .infinity, maxHeight: .infinity)

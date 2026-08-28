@@ -24,7 +24,7 @@ struct AccountsScreen: View {
                 Spacer(minLength: AccountsDesign.cardPadding)
             }
 
-            PrimaryButton(title: "Перевести") {
+            AccountsPrimaryButton(title: "Перевести") {
                 router.selectedTab = .transfer
             }
             .disabled(store.accounts.isEmpty)
@@ -33,6 +33,9 @@ struct AccountsScreen: View {
         .padding(.top, AccountsDesign.cardPadding)
         .padding(.bottom, AccountsDesign.cardSpacing)
         .background(AccountsDesign.screenBackground.ignoresSafeArea())
+        // Потолок Dynamic Type: вёрстка фиксированная, без ScrollView,
+        // на бо́льших размерах контент перестал бы помещаться.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
     }
 }
 
