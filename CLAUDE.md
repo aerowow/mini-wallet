@@ -16,6 +16,7 @@
 | Папка | Владелец |
 |---|---|
 | `mini-wallet/mini-wallet.xcodeproj/`, корневые файлы проекта | aerowow (только через согласование) |
+| `mini-wallet/mini-wallet/Core/` | Общий контракт (aerowow). После мержа `core/contract` + `core/shell` — ЗАМОРОЖЕН: правки только отдельным PR, согласованным в чате |
 | `mini-wallet/mini-wallet/Features/Accounts/` | Dev 1 (ветка `feature/accounts`) |
 | `mini-wallet/mini-wallet/Features/Transfer/` | Dev 2 (ветка `feature/transfer`) |
 | `mini-wallet/mini-wallet/Features/History/` | Dev 3 (ветка `feature/history`) |
@@ -25,7 +26,8 @@
 Чужие папки не трогать даже «по мелочи» — это ломает параллельную работу.
 
 ## Процесс
-- Ветки: `feature/accounts`, `feature/transfer`, `feature/history`, `docs/spec`.
+- Ветки: `feature/accounts`, `feature/transfer`, `feature/history`, `docs/spec`;
+  разовые ветки контракта: core/contract, core/shell (aerowow).
   Прямые пуши в `main` запрещены (branch protection).
 - Любое изменение — через PR по шаблону, минимум 1 approve от другого участника.
 - Перед PR: сборка `xcodebuild -project mini-wallet/mini-wallet.xcodeproj -scheme mini-wallet
