@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct mini_walletApp: App {
+    @State private var store = WalletStore()
+    @State private var router = AppRouter()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootTabView()
+                .environment(store)
+                .environment(router)
         }
     }
 }
