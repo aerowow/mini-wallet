@@ -52,6 +52,13 @@ final class WalletStore {
         // Имитация задержки выполнения ~1 с (согласовано с Dev 2).
         try? await Task.sleep(for: .seconds(1))
 
+        // Повторная проверка после паузы: MainActor реентерабелен на await,
+        // и параллельный вызов с тем же ключом мог уже выполнить перевод.
+        if let operationID = completedTransferIDs[request.key],
+           let original = operations.first(where: { $0.id == operationID }) {
+            return .duplicate(original)
+        }
+
         #if DEBUG
         if simulateExecutionFailure {
             simulateExecutionFailure = false // мок-ошибка одноразовая (ТЗ 02)
