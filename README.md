@@ -27,6 +27,7 @@
 
 ## Структура
 - `mini-wallet/` — Xcode-проект; `mini-wallet/mini-wallet/Features/` — по папке на разработчика
+- `mini-wallet/mini-wallet/Core/` — общий контракт: модели, `WalletStore`, `MoneyFormatter`, мок-данные, `AppRouter`. После мержа `core/shell` заморожен
 - `docs/specs/` — ТЗ от PM, `docs/` — итоговый PDF (`docs/MiniWallet-specs.pdf`)
 - `design/` — макеты (pen.dev)
 - `sessions/` — журналы сессий с агентами (промпты дословно)
