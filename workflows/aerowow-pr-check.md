@@ -1,0 +1,21 @@
+# Workflow: проверка перед PR (aerowow)
+
+Повторяемая процедура: прогоняется перед каждым PR в mini-wallet.
+
+## Как запускать
+Скопировать промпт агенту в корне репозитория.
+
+## Промпт
+
+Проверь мою ветку перед PR по шагам, после каждого шага — короткий вердикт:
+1) `git diff main --stat` — в диффе только мои папки (моя фича + мои sessions/ и workflows/);
+   project.pbxproj и общий контракт не изменены;
+2) сборка: `xcodebuild -project mini-wallet/mini-wallet.xcodeproj -scheme mini-wallet
+   -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build` — успешна;
+3) `git diff main` — в диффе нет секретов, токенов, личных данных, абсолютных путей с моим именем;
+4) лог сессии за сегодня существует в sessions/aerowow/;
+5) собери заполненный черновик описания PR по .github/pull_request_template.md.
+Если какой-то шаг провален — остановись и покажи, что чинить.
+
+## Что на выходе
+Вердикт по 4 проверкам + готовый черновик описания PR.
