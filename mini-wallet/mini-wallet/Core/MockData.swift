@@ -55,6 +55,10 @@ enum MockData {
         let calendar = Calendar.current
         let day = calendar.date(byAdding: .day, value: -daysAgo,
                                 to: calendar.startOfDay(for: .now)) ?? .now
-        return calendar.date(bySettingHour: hour, minute: minute, second: 0, of: day) ?? day
+        let date = calendar.date(bySettingHour: hour, minute: minute, second: 0, of: day) ?? day
+        // Времена дня 0 из ТЗ могут ещё не наступить при утреннем запуске —
+        // ограничиваем сверху текущим моментом, чтобы новый перевод (date: .now)
+        // не нарушал порядок «по убыванию даты и времени».
+        return min(date, .now)
     }
 }
