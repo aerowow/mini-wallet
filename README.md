@@ -43,17 +43,19 @@
 ## Команда: кто что делал
 | GitHub | Роль | Что сделал | Ветки | PR |
 |---|---|---|---|---|
-| aerowow | Владелец репо, тимлид, Dev 1 | Bootstrap, контракт Core, оболочка, макеты, процесс; экран счетов | core/contract, core/shell, feature/accounts и др. | #1, #3, #4, #5, #7, #8 |
-| ahrorjabborov | Dev 2 | Перевод с идемпотентностью | feature/transfer | #9 |
-| dysya (в репо — папки `dpinigiin`) | Dev 3 | История: группировка, фильтры, поиск | feature/history | #6, #10 |
-| jwynana | PM | ТЗ на три экрана | docs/spec | #2 |
+| aerowow | Владелец репо, тимлид, Dev 1 | Bootstrap, контракт Core, оболочка, макеты, процесс; экран счетов; финальный README | core/contract, core/shell, feature/accounts и др. | #1, #3, #4, #5, #7, #8, #11 |
+| ahrorjabborov | Dev 2 | Перевод с идемпотентностью; общие секции и правки консистентности REPORT.md | feature/transfer и др. | #9, #12, #13, #15 |
+| dysya (в репо — папки `dpinigiin`) | Dev 3 | История: группировка, фильтры, поиск; workflow параллельных субагентов | feature/history и др. | #6, #10, #14 |
+| jwynana | PM | ТЗ на три экрана, ревью ТЗ субагентами, workflow PM, секция PM в REPORT.md, итоговый PDF | docs/spec, docs/final-pdf | #2, #16 |
 
 Кросс-ревью: каждый PR получал минимум 1 approve от другого участника.
 
 ## Структура
 - `mini-wallet/` — Xcode-проект; `mini-wallet/mini-wallet/Features/` — по папке на разработчика
 - `mini-wallet/mini-wallet/Core/` — общий контракт: модели, `WalletStore`, `MoneyFormatter`, мок-данные, `AppRouter`. После мержа `core/shell` заморожен
-- `docs/specs/` — ТЗ от PM (01-accounts, 02-transfer, 03-history), `docs/ONBOARDING.md` — онбординг участника
+- `docs/specs/` — ТЗ от PM (01-accounts, 02-transfer, 03-history),
+  `docs/MiniWallet-specs.pdf` — итоговый PDF от PM (команда и ТЗ трёх экранов),
+  `docs/ONBOARDING.md` — онбординг участника
 - `design/` — макеты (pen.dev): `accountsDesign.pdf`, `transferDesign.pdf`,
   `historyDesign.pdf` + промпт генерации `pen-dev-prompt.md`
 - `sessions/` — журналы сессий с агентами (промпты дословно)
